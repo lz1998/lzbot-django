@@ -17,6 +17,7 @@ class Persons(models.Model):
 
 
 class RanksAverage(models.Model):
+    id = models.IntegerField(primary_key=True, verbose_name='id')
     personId = models.CharField(max_length=10, verbose_name='personId')
     eventId = models.CharField(max_length=6, verbose_name='eventId')
     best = models.IntegerField( verbose_name='best')
@@ -32,6 +33,7 @@ class RanksAverage(models.Model):
 
 
 class RanksSingle(models.Model):
+    id=models.IntegerField(primary_key=True,verbose_name='id')
     personId = models.CharField(max_length=10, verbose_name='personId')
     eventId = models.CharField(max_length=6, verbose_name='eventId')
     best = models.IntegerField( verbose_name='best')
