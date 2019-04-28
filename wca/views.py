@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import *
 from django.db.models import Q
-from .models import Persons, RanksAverage, RanksSingle
+from .models import Persons,Rankssingle,Ranksaverage
 
 
 # Create your views here.
@@ -25,7 +25,7 @@ def queryId(request):
             'id': result.id,
             'subid': result.subid,
             'name': result.name,
-            'countryId': result.countryId,
+            'countryId': result.countryid,
             'gender': result.gender
         })
 
@@ -39,15 +39,15 @@ def queryId(request):
 
 def ranksAverage(request):
     personId = request.GET.get('personId')
-    results = RanksAverage.objects.filter(personId=personId)
+    results = Ranksaverage.objects.filter(personid=personId)
     data = []
     for result in results:
         data.append({
-            'eventId': result.eventId,
+            'eventId': result.eventid,
             'best': result.best,
-            'worldRank': result.worldRank,
-            'continentRank': result.continentRank,
-            'countryRank': result.countryRank
+            'worldRank': result.worldrank,
+            'continentRank': result.continentrank,
+            'countryRank': result.countryrank
         })
     ret = {
         'status': 'ok',
@@ -58,15 +58,15 @@ def ranksAverage(request):
 
 def ranksSingle(request):
     personId = request.GET.get('personId')
-    results = RanksSingle.objects.filter(personId=personId)
+    results = Rankssingle.objects.filter(personid=personId)
     data = []
     for result in results:
         data.append({
-            'eventId': result.eventId,
+            'eventId': result.eventid,
             'best': result.best,
-            'worldRank': result.worldRank,
-            'continentRank': result.continentRank,
-            'countryRank': result.countryRank
+            'worldRank': result.worldrank,
+            'continentRank': result.continentrank,
+            'countryRank': result.countryrank
         })
     ret = {
         'status': 'ok',
